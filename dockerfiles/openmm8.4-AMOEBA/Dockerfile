@@ -1,8 +1,9 @@
 #Use a base image with CUDA 12.2
 FROM docker.io/nvidia/cuda:12.2.2-devel-ubuntu22.04
 # Install dependencies
-RUN apt-get update && apt-get install -y wget cmake g++ gcc git libeigen3-dev libjpeg-dev libpng-dev 
-RUN apt-get update && apt-get install -y curl bzip2 tar cmake g++ gcc git ninja-build libeigen3-dev 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget curl bzip2 tar cmake g++ gcc git ninja-build \
+    libeigen3-dev libjpeg-dev libpng-dev
 # Install micromamba
 RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
     | tar -xvj bin/micromamba && \
